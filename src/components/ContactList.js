@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaUsers, FaSearch } from 'react-icons/fa';
+import { contactList } from "../Data";
 
 const Container = styled.div`
 display:flex;
@@ -105,22 +106,21 @@ width: 100%;
 margin: 0 12px;
 `;
 
-const ContactComponent = () => {
+const ContactComponent = (props) => {
+   const {userData} = props;
+
    return <ContactItem>
-     <ProfileImage src="/profile/profile.jpeg" />
+     <ProfileImage src={userData.pofilePic} />
      <ContactInfo>
-      <ContactName>
-         Naja
-      </ContactName>
-      <MessageText>
-         Hi, how are you?
-      </MessageText>
+      <ContactName> {userData.name} </ContactName>
+      <MessageText> {userData.lastText} </MessageText>
      </ContactInfo>
-     <TimeText>10.04PM</TimeText>
+     <TimeText>{userData.lastTextTime}</TimeText>
    </ContactItem>
 }
 
-function ContactList() {
+const ContactList = () => {
+
    return <Container>
       <ProfileInfoDiv>
          <ProfileImage src="profile/profile.jpeg" />
@@ -151,13 +151,10 @@ function ContactList() {
          </SearchContainer>
          {/* <FaUsers /> */}
       </SearchBox>
-      <ContactComponent />
-      <ContactComponent />
-      <ContactComponent />
-      <ContactComponent />
-      <ContactComponent />
-      <ContactComponent />
-      <ContactComponent />
+     {contactList.map((userData) => 
+      (
+      <ContactComponent userData={userData} />
+     ))}
    </Container>
 }
 

@@ -37,6 +37,31 @@ const EmojiImage = styled.img`
 width: 28px;
 height: 28px;
 opacity: 0.4;
+cursor: pointer;
+padding-left: 10px;
+`;
+
+const MessageContainer = styled.div`
+display: flex;
+flex-direction: column;
+height: 100%;
+background: #e5dbb5;
+`;
+
+const MessageDiv = styled.div`
+justify-content: ${props => props.isYours ? 'flex-end' : 'flex-start'};
+display: flex;
+margin: 5px 16px;
+`;
+
+const Message = styled.div`
+background: ${props => props.isYours ? '#daf8cb' : 'white'};
+// background: #daf8cb;
+max-width: 50%;
+color: #303030;
+padding: 8px 10px;
+font-size: 14px;
+border-radius: 8px;
 `;
 const Conversation = () => {
 	return <Container>
@@ -44,12 +69,21 @@ const Conversation = () => {
 			<ProfileImage src="/profile/profile-1.jpeg"/>
 			Naja Nadhirah
 		</ProfileHeader>
+		<MessageContainer>
+			<MessageDiv isYours={true}>
+				<Message isYours={true}>Hello</Message>
+			</MessageDiv>
+			<MessageDiv isYours={false}>
+				<Message isYours={false}>Hello</Message>
+			</MessageDiv>
+			<MessageDiv isYours={true}>
+				<Message isYours={true}>Hello</Message>
+			</MessageDiv>
+		</MessageContainer>
 		<ChatBox>
 			<SearchContainer>
 				<EmojiImage src="/smile.jpeg" />
-				<SearchInput placeholder="Type a message">
-
-				</SearchInput>
+				<SearchInput placeholder="Type a message" />
 			</SearchContainer>
 		</ChatBox>
 	</Container>
