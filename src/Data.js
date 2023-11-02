@@ -2,7 +2,7 @@ export const contactList = [
     {
       id: 1,
       name: "Huiyi",
-      profilePic: "/profile/profile-1.jpeg",
+      profilePic: "profile/profile.jpeg",
       lastText: "Hey Man",
       lastTextTime: "12:58 PM",
     },
